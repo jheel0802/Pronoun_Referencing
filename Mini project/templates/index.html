@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Grammar PAL</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<div class="header">
+		<h1>Grammar Pal</h1>
+	</div>
+	<div class="title">
+		<div class="title-left">
+			<div class="dropdown">
+				<button class="title-button">Part of speech</button>
+				<div class="dropdown-content">
+					<a href="#">nouns</a>
+					<a href="#">pronouns</a>
+					<a href="#">verbs</a>
+				</div>
+			</div>
+		</div>
+		<div class="title-right">
+			<button class="title-button">Generate Random Input</button>
+		</div>
+	</div>
+	<div class="content">
+		<div class="left-column">
+			<h3>Left Column</h3>
+			<p>The input text goes here</p>
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<div class="right-column">
+			<h3>Right Column</h3>
+			<p>
+				<h1>Identified Pronouns:</h1>
+				<ul>
+					{% for pronoun in pronouns %}
+					<li>{{ pronoun }}</li>
+					{% endfor %}
+				</ul>
+			</p>
+		</div>
+	</div>
+	<div class="footer">
+		<p>Thank you</p>
+		<a href="#">Help</a>
+		<a href="#">Demo</a>
+		<a href="#">Contact</a>
+	</div>
+</body>
+
+</html>
