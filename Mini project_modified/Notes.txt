@@ -1,0 +1,12 @@
+PS C:\Users\Gaurav Umesh Nambiar\OneDrive\Desktop\Mini project> ls
+
+
+    Directory: C:\Users\Gaurav Umesh Nambiar\OneDrive\Desktop\Mini project
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        29-04-2023  12:31 PM            162 server.py
+
+
+To run code : " Python Server.py "

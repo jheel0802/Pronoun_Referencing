@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grammar PAL</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function generateParagraph() {
+            var paragraphs = [
+                "Ram and Rahul encountered a beautiful forest, breathtaking waterfall, and mountainside view where they discovered gold and silver.",
+                "The old man sat in his rocking chair, sipping lemonade and watching the world go by.",
+                "The dog barked loudly, scaring the mailman and the neighbors.",
+                "The sun slowly set behind the mountains, casting a warm orange glow across the landscape.",
+                "The children played in the park, running, jumping, and laughing with joy.",
+                "The waves crashed against the shore, the salty mist spraying across the beach."
+            ];
+            var randomParagraph = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+            document.getElementById("input-text").value = randomParagraph;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Grammar Pal</h1>
+    </div>
+    <div class="title">
+        {% comment %} <div class="title-left">
+            <div class="dropdown">
+                <button class="title-button">Part of speech</button>
+                <div class="dropdown-content">
+                    <a href="#">nouns</a>
+                    <a href="#">pronouns</a>
+                    <a href="#">verbs</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        <div class="title-right">
+            <button class="title-button" onclick="generateParagraph()">Generate Random Input</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left-column">
+            <h3>Input Text</h3>
+            <p>Paste or type your text here:</p>
+            <form method="POST">
+                <textarea id="input-text" name="sentence" rows="5" cols="50">{{ sentence }}</textarea>
+                <br><br>
+                <button type="submit">Identify POS</button>
+            </form>
+        </div>
+        <div class="right-column">
+            <h3>Identified Nouns</h3>
+            {% if nouns %}
+            <ul>
+                {% for noun in nouns %}
+                <li>{{ noun }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No nouns found.</p>
+            {% endif %}
+            <h3>Identified Pronouns</h3>
+            {% if pronouns %}
+            <ul>
+                {% for pronoun in pronouns %}
+                <li>{{ pronoun }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No pronouns found.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="footer">
+        <p>Thank you</p>
+        <a href="#">Help</a>
+        <a href="#">Demo</a>
+        <a href="#">Contact</a>
+    </div>
+</body>
+
+</html>
