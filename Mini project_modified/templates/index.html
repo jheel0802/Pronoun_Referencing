@@ -25,16 +25,6 @@
         <h1>Grammar Pal</h1>
     </div>
     <div class="title">
-        {% comment %} <div class="title-left">
-            <div class="dropdown">
-                <button class="title-button">Part of speech</button>
-                <div class="dropdown-content">
-                    <a href="#">nouns</a>
-                    <a href="#">pronouns</a>
-                    <a href="#">verbs</a>
-                </div>
-            </div>
-        </div> {% endcomment %}
         <div class="title-right">
             <button class="title-button" onclick="generateParagraph()">Generate Random Input</button>
         </div>
@@ -51,14 +41,14 @@
         </div>
         <div class="right-column">
             <h3>Identified Nouns</h3>
-            {% if nouns %}
+            {% if noun_phrases %}
             <ul>
-                {% for noun in nouns %}
+                {% for noun in noun_phrases %}
                 <li>{{ noun }}</li>
                 {% endfor %}
             </ul>
             {% else %}
-            <p>No nouns found.</p>
+            <p>No noun_phrases found.</p>
             {% endif %}
             <h3>Identified Pronouns</h3>
             {% if pronouns %}
