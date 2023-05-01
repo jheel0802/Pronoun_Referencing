@@ -60,6 +60,16 @@
             {% else %}
             <p>No pronouns found.</p>
             {% endif %}
+            <h3>Identified Coreferenced Noun-Pronoun</h3>
+            {% if coreference %}
+            <ul>
+                {% for coref in coreference %}
+                <li>{{ coref }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No Coreference found found.</p>
+            {% endif %}
         </div>
     </div>
     <div class="footer">

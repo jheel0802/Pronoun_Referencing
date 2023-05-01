@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request
 import stanza
-
+from stanfordcorenlp import StanfordCoreNLP
+import json
 # download the English language model
 stanza.download('en')
 
 # initialize the pipeline
 nlp = stanza.Pipeline('en')
+
+# Set the path to the directory containing the Stanford CoreNLP library
+path_to_corenlp = 'C:/Users/Admin/Desktop/sem 6/mp/stanford-corenlp-4.5.4'
+
+# Start the Stanford CoreNLP server
+nlp_co = StanfordCoreNLP(path_to_corenlp)
 
 app = Flask(__name__)
 
@@ -16,11 +23,26 @@ def index():
     sentence = ""
     noun_phrases = []
     if request.method == 'POST':
-        input_text = request.form['sentence']
-        pronouns = extract_pronouns(input_text)
         sentence = request.form['sentence']
+        pronouns = extract_pronouns(sentence)
         noun_phrases = get_noun_phrases(sentence)
-    return render_template('index.html', input_text=input_text, pronouns=pronouns, sentence=sentence, noun_phrases=noun_phrases)
+        coreference = get_coreference(sentence)
+    return render_template('index.html', pronouns=pronouns, sentence=sentence, noun_phrases=noun_phrases, coreference=coreference)
+
+def get_coreference(text):
+    annotated_text = nlp_co.annotate(text, properties={
+    'annotators': 'coref',
+    'outputFormat': 'json',
+    'timeout': 30000,
+})
+    coreferences = []
+    json_load = (json.loads(annotated_text))
+    for cluster in json_load['corefs'].values():
+        word_group = []
+        for connections in cluster:
+            word_group.append(connections['text'])
+        coreferences.append(word_group)
+    return coreferences
 
 def extract_pronouns(text):
     # process the input text

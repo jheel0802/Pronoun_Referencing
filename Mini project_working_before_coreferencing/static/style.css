@@ -1,0 +1,112 @@
+/* CSS for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header styles */
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  /* Title styles */
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .title-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .title-button:hover {
+    opacity: 0.8;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+      background-color: #4CAF50;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+      background-color: #4CAF50;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Content styles */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  .left-column, .right-column {
+      height: 500px;
+    flex-basis: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .left-column h3, .right-column h3 {
+    margin-top: 0;
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
