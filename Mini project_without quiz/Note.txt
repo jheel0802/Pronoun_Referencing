@@ -1,0 +1,46 @@
+def to_upper(sentence):
+    return sentence.upper()
+
+
+from flask import Flask, render_template, request
+from upper import to_upper
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def convert():
+    sentence = request.form['sentence']
+    upper_case = to_upper(sentence)
+    return render_template('result.html', sentence=sentence, upper_case=upper_case)
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Result</title>
+  </head>
+  <body>
+    <h1>Result</h1>
+    <p>Original sentence: {{ sentence }}</p>
+    <p>Upper case sentence: {{ upper_case }}</p>
+  </body>
+</html>
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        sentence = request.form['sentence']
+        upper_case = to_upper(sentence)
+        return render_template('result.html', sentence=sentence, upper_case=upper_case)
+    else:
+        return render_template('index.html')
+
+
+{% for word in upper_case %}
+  <li>{{ word }}</li>
+{% endfor %}

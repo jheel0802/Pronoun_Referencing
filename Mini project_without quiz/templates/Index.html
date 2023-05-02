@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grammar PAL</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function generateParagraph() {
+            var paragraphs = [
+                "Ram and Rahul encountered a beautiful forest, breathtaking waterfall, and mountainside view where they discovered gold and silver.",
+                "The old man sat in his rocking chair, sipping lemonade and watching the world go by.",
+                "The dog barked loudly, scaring the mailman and the neighbors.",
+                "The sun slowly set behind the mountains, casting a warm orange glow across the landscape.",
+                "The children played in the park, running, jumping, and laughing with joy.",
+                "The waves crashed against the shore, the salty mist spraying across the beach."
+            ];
+            var randomParagraph = paragraphs[Math.floor(Math.random() * paragraphs.length)];
+            document.getElementById("input-text").value = randomParagraph;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Grammar Pal</h1>
+    </div>
+    <div class="title">
+        <div class="title-right">
+            <button class="title-button" onclick="generateParagraph()">Generate Random Input</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left-column">
+            <h2>Input Text</h2>
+            <p>Paste or type your text here:</p>
+            <form method="POST">
+                <textarea id="input-text" name="sentence" rows="5" cols="50">{{ sentence }}</textarea>
+                <br><br>
+                <button type="submit">Identify POS</button>
+            </form>
+        </div>
+        <div class="right-column">
+            
+            <h4>Identified Noun_Phrases</h4>
+            {% if noun_phrases %}
+            <ul>
+                {% for noun in noun_phrases %}
+                <li>{{ noun }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No noun_phrases found yet .</p>
+            {% endif %}
+
+            <h4>Noun Chunks</h4>
+            {% if noun_chunks %}
+            <ul>
+            {% for noun_chunk in noun_chunks %}
+                <li>{{ noun_chunk }}</li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <p>No noun_chunk found yet .</p>
+            {% endif %}
+
+            <h4>Adjectives</h4>
+            {% if adjectives %}
+            <ul>
+            {% for adjective in adjectives %}
+                <li>{{ adjective }}</li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <p>No adjective found yet .</p>
+            {% endif %}
+
+            <h4>Articles</h4>
+            {% if articles %}
+            <ul>
+            {% for article in articles %}
+                <li>{{ article }}</li>
+            {% endfor %}
+            {% else %}
+            <p>No Articles found yet .</p>
+            {% endif %}
+
+            <h4>Identified Pronouns</h4>
+            {% if pronouns %}
+            <ul>
+                {% for pronoun in pronouns %}
+                <li>{{ pronoun }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No pronouns found yet.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="footer">
+        <p>Thank you</p>
+        <a href="#">TEST YOURSELF</a>
+    </div>
+</body>
+
+</html>
